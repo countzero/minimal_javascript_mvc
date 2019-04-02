@@ -1,24 +1,21 @@
 {
     /*
-     * Enable ECMAScript Modules (ES Modules).
-     *
-     * @see https://eslint.org/docs/user-guide/configuring#specifying-parser-options
-     */
-    "parserOptions": {
-        "ecmaVersion": 2018
-    },
-
-    /*
-     * Enable all ECMAScript 6 features except for ECMAScript Modules (ES Modules).
-     * The common default for Node.js and browser JavaScript modules is still CommonJS.
-     * Some components of the client code are written in ES Module syntax and extend
-     * this eslint configuration. Until the transisiton to ES Modules has been completed
-     * we stick to CommonJS as the lowest common denominator!
+     * Enable browser global variables and all ECMAScript 6 features except for modules.
      *
      * @see https://eslint.org/docs/user-guide/configuring#specifying-environments
      */
     "env": {
+        "browser": true,
         "es6": true
+    },
+
+    /*
+     * Enable ECMAScript Modules (ES Modules) syntax.
+     *
+     * @see https://eslint.org/docs/user-guide/configuring#specifying-parser-options
+     */
+    "parserOptions": {
+        "sourceType": "module"
     },
 
     "rules": {
