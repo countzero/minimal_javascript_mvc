@@ -1,0 +1,6 @@
+# Ignore system files.
+*.swp
+.DS_Store
+
+# Ignore Sublime Text files.
+*.sublime-workspace
