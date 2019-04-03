@@ -4,12 +4,63 @@
 export class FrameworkModel {
 
     /**
+     * Fetch a JSON resource from an URL.
+     *
+     * @param {string} url A URL to a JSON resource.
+     * @returns {Promise} Promise object representing the fetch result.
+     */
+    fetch (url) {
+
+        return new Promise(async (resolve, reject) => {
+
+            try {
+
+                const responseText = await this.requestUrl(url);
+                const responseJson = JSON.parse(responseText);
+                this.mergeFetchedDataIntoModel(responseJson);
+
+            } catch (error) {
+
+                reject(error);
+                return;
+            }
+
+            resolve(this);
+        });
+    }
+
+    /**
+     * Merge the fetched data into the model.
+     *
+     * @param {string} responseJson The fetched data in a JSON format.
+     */
+    mergeFetchedDataIntoModel (responseJson) {
+
+        Object.keys(responseJson).forEach(key => {
+
+            const modelPropertyType = typeof this[key];
+
+            if (modelPropertyType === 'undefined') {
+
+                throw new Error(`The model property '${key}' has to be defined.`);
+            }
+
+            if (modelPropertyType !== typeof responseJson[key]) {
+
+                throw new Error(`The type of the fetched property '${key}' must be '${modelPropertyType}'.`);
+            }
+
+            this[key] = responseJson[key];
+        });
+    }
+
+    /**
      * Fetches a resource from an URL.
      *
      * @param {string} url A URL to request.
      * @returns {Promise} Promise object representing the fetch result.
      */
-    fetch (url) {
+    async requestUrl (url) {
 
         return new Promise((resolve, reject) => {
 
@@ -34,10 +85,7 @@ export class FrameworkModel {
                         resolve(xhr.responseText);
                     }
 
-                    reject(
-                        new Error('The HTTP status code is not OK.'),
-                        xhr
-                    );
+                    reject(new Error('The HTTP status code is not OK.'));
                 };
 
                 xhr.open('GET', url, true);
@@ -45,10 +93,7 @@ export class FrameworkModel {
 
             } catch (error) {
 
-                reject(
-                    error,
-                    xhr
-                );
+                reject(error);
             }
         });
     }

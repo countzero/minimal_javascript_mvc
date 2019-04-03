@@ -8,10 +8,12 @@ import { FrameworkModel } from './../../framework/model.js';
 export class SystemsModel extends FrameworkModel {
 
     /**
-     *
+     * Initialize the model.
      */
     constructor () {
 
-        console.log('systemsModel');
+        super();
+
+        this.systems = [];
     }
 }

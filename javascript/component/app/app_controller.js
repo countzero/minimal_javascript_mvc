@@ -14,7 +14,6 @@ export class AppController {
 
         this.appModel = new AppModel();
         this.appView = new AppView(this.appModel);
-
         this.systemsController = new SystemsController();
     }
 
@@ -24,5 +23,15 @@ export class AppController {
     start () {
 
         this.appView.render(document.body);
+
+        this.initializeControllers();
+    }
+
+    /**
+     * Initialize all controllers.
+     */
+    initializeControllers () {
+
+        this.systemsController.initialize();
     }
 }

@@ -1,10 +1,27 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <title>Minimal JavaScript MVC</title>
+        <meta name="Description" content="A minimal ES Module experiment.">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+        <link rel="stylesheet" href="./css/normalize.css">
+        <link rel="stylesheet" href="./css/style.css">
+        <link rel="modulepreload" href="./javascript/framework/model.js">
+        <link rel="modulepreload" href="./javascript/framework/view.js">
+        <link rel="modulepreload" href="./javascript/component/app/app_controller.js">
+        <link rel="modulepreload" href="./javascript/component/app/app_view.js">
+        <link rel="modulepreload" href="./javascript/component/app/app_model.js">
+        <link rel="modulepreload" href="./javascript/component/systems/systems_controller.js">
+        <link rel="modulepreload" href="./javascript/component/systems/systems_view.js">
+        <link rel="modulepreload" href="./javascript/component/systems/systems_model.js">
     </head>
     <body>
         <script type="module" src="./javascript/index.js"></script>
+        <script nomodule src="./javascript/handle_incompatible_browser.js"></script>
+        <noscript>
+            <h1>Your browser does not support JavaScript!</h1>
+            <h2>Please consider enabling JavaScript in your browser to access this application.</h2>
+        </noscript>
     </body>
 </html>

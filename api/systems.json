@@ -1,0 +1,12 @@
+{
+    "systems": [
+        {
+            "id": 1,
+            "name": "System A"
+        },
+        {
+            "id": 2,
+            "name": "System B"
+        }
+    ]
+}

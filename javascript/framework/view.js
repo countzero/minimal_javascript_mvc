@@ -4,16 +4,22 @@
 export class FrameworkView {
 
     /**
-     * Fetches a resource from an URL.
+     * Renders a template into a specific DOM element.
      *
-     * @param {string} url A URL to request.
-     * @returns {Promise} Promise object representing the fetch result.
+     * @param {object} domElement A reference to a DOM element.
      */
-    render (elementId ) {
+    render (domElement) {
 
-        document.getElementById(elementId).innerHTML = this.createHtmlFromTemplate();
+        domElement.innerHTML = this.renderTemplateWithModel();
     }
 
-    createHtmlFromTemplate (element, ) {
+    /**
+     * Render the template with the view model.
+     *
+     * @returns {string} The rendered template HTML that can be injected in the DOM.
+     */
+    renderTemplateWithModel () {
+
+        return this.template(this.model);
     }
-};
+}
